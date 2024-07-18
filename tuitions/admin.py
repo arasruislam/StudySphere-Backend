@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tuition
+from .models import Tuition, Application, Review
 
 
 # Register your models here.
@@ -8,3 +8,5 @@ class TuitionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Tuition, TuitionAdmin)
+admin.site.register(Application)
+admin.site.register(Review)
