@@ -4,7 +4,7 @@ from .models import Tuition
 
 # Register your models here.
 class TuitionAdmin(admin.ModelAdmin):
-    list_display = ["title", "availability", "created_at"]
+    list_display = ["title", "created_at", "level", "subject", "availability"]
 
 
 admin.site.register(Tuition, TuitionAdmin)
