@@ -21,9 +21,10 @@ class Application(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tuition = models.ForeignKey(Tuition, on_delete=models.CASCADE)
     applied_at = models.DateTimeField(auto_now_add=True)
+    is_accepted = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.user.username} - {self.tuition.title}"
+        return f"{self.user.username}, apply for - {self.tuition.title}"
 
 
 STAR_CHOICES = [
