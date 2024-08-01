@@ -31,6 +31,7 @@ Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is 
 
 ## Technology Stack
 
-- **Backend**: Django Rest Framework
+- **Backend**: Django | Django Rest Framework
 - **Frontend**: React.js
 - **Styling**: Tailwind CSS
+- **Authentication**: pip install django-allauth | pip install django-rest-auth
