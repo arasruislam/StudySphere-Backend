@@ -4,7 +4,7 @@ from .models import UserProfile
 
 # Register your models here
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ["_Id", "full_name", "city", "state", "phone"]
+    list_display = ["_Id", "full_name", "city", "state", "phone", "profile_image"]
 
     def full_name(self, obj):
         return obj.user.get_full_name()
