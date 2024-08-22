@@ -1,8 +1,6 @@
 from rest_framework import viewsets
 from .models import UserProfile
 from .serializers import UserProfileSerializer
-from rest_framework.response import Response
-from rest_framework.exceptions import NotFound
 
 
 # Create your views here.
