@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Tuition, Application, Review
+from account.serializers import UserSerializer
 
 
 class TuitionSerializer(serializers.ModelSerializer):
@@ -9,6 +10,8 @@ class TuitionSerializer(serializers.ModelSerializer):
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
         model = Application
         fields = "__all__"
