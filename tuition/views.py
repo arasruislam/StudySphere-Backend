@@ -12,6 +12,16 @@ class TuitionViewSet(viewsets.ModelViewSet):
 class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        user_id = self.request.query_params.get("user_id")
+
+        if user_id:
+            queryset = queryset.filter(user_id=user_id)
+
+        return queryset
+
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
