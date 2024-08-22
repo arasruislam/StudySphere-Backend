@@ -14,7 +14,8 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=100, null=True, blank=True)
     state = models.CharField(max_length=100, null=True, blank=True)
     zip_code = models.CharField(max_length=20, null=True, blank=True)
-    social_links = models.JSONField(default=dict, null=True, blank=True)
+    facebook = models.URLField(null=True, blank=True)
+    github = models.URLField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "User Profile"
