@@ -17,23 +17,13 @@ class Account(models.Model):
         verbose_name_plural = 'User Account'
 
 
-class Address(models.Model):
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=20)
-
-    def __str__(self):
-        return f"{self.street}, {self.city}"
-    
-    class Meta:
-        verbose_name_plural = 'User Address'
-
-
 class UserProfile(models.Model):
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
     bio = models.TextField(null=True, blank=True)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE)
+    street = models.CharField(max_length=255, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    state = models.CharField(max_length=100, null=True, blank=True)
+    zip_code = models.CharField(max_length=20, null=True, blank=True)
     social_links = models.JSONField(default=dict, null=True, blank=True)
 
     class Meta:
