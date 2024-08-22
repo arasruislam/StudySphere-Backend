@@ -1,5 +1,5 @@
 """
-WSGI config for study_shpere project.
+WSGI config for study_sphere project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'study_shpere.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'study_sphere.settings')
 
 application = get_wsgi_application()
