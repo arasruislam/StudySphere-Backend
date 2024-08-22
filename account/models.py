@@ -13,6 +13,9 @@ class Account(models.Model):
     def __str__(self) -> str:
         return self.user.username
 
+    class Meta:
+        verbose_name_plural = 'User Account'
+
 
 class Address(models.Model):
     street = models.CharField(max_length=255)
@@ -22,6 +25,9 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.street}, {self.city}"
+    
+    class Meta:
+        verbose_name_plural = 'User Address'
 
 
 class UserProfile(models.Model):
@@ -29,3 +35,6 @@ class UserProfile(models.Model):
     bio = models.TextField(null=True, blank=True)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
     social_links = models.JSONField(default=dict, null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'User Profile'
