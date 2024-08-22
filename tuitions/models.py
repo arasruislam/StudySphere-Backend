@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser
-from constants import APPLICATION_STATUS, STAR_CHOICES
+from .constants import APPLICATION_STATUS, STAR_CHOICES
 
 
 class Tuition(models.Model):
@@ -19,16 +19,17 @@ class Tuition(models.Model):
 
 class TuitionApplication(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    profile = models.ForeignKey(
+        "profiles.Profile", on_delete=models.CASCADE, null=True, blank=True
+    )
     tuition = models.ForeignKey(Tuition, on_delete=models.CASCADE)
     applied_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(
-        max_length=20,
-        choices=APPLICATION_STATUS,
-        default="pending",
+        max_length=20, choices=APPLICATION_STATUS, default="pending"
     )
 
     def __str__(self):
-        return f"{self.user.username}, apply for - {self.tuition.title}"
+        return f"{self.user.username} applied for {self.tuition.title}"
 
 
 class Review(models.Model):

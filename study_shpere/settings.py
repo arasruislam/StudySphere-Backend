@@ -20,11 +20,11 @@ SECRET_KEY = "django-insecure-7hz+u6+4y2_p^gp2ij+thqlil#um*#&65f$lt#&(ywy9lrgmer
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 # Application definition
-
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "accounts",
     "profiles",
     "tuitions",
-
 ]
 
 
