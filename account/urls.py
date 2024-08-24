@@ -8,4 +8,5 @@ router.register(r"", views.UserProfileViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
+    path("new_user/register/", views.UserRegistrationApiView.as_view(), name="register"),
 ]
