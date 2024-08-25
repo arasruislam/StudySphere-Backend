@@ -11,5 +11,7 @@ urlpatterns = [
     path(
         "new_user/register/", views.UserRegistrationApiView.as_view(), name="register"
     ),
+    path("user/login/", views.UserLoginApiView.as_view(), name="login"),
+    path("user/logout/", views.UserLogoutApiView.as_view(), name="logout"),
     path("active/<uid64>/<token>/", views.Activate, name="active"),
 ]
