@@ -31,6 +31,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return queryset
 
 
+# user registration system
 class UserRegistrationApiView(APIView):
     serializer_class = UserRegistrationSerializer
 
@@ -59,11 +60,13 @@ class UserRegistrationApiView(APIView):
 
         return Response(serializer.errors)
 
+
+# activated user
 def Activate(request, uid64, token):
     try:
         uid = urlsafe_base64_decode(uid64).decode()
         user = User._default_manager.get(pk=uid)
-    except(User.DoesNotExist):
+    except User.DoesNotExist:
         user = None
 
     if user is not None and default_token_generator.check_token(user, token):
@@ -74,3 +77,4 @@ def Activate(request, uid64, token):
     else:
         messages.error(request, "Activation link is invalid!")
         return redirect("register")
+
