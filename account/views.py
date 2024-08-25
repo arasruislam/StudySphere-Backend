@@ -4,10 +4,10 @@ from .serializers import (
     UserRegistrationSerializer,
     UserLoginSerializer,
     ChangePasswordSerializer,
-    UserSerializer,
 )
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework.authtoken.models import Token
+from django.core.exceptions import ValidationError
 from django.utils.encoding import force_bytes
 from rest_framework.response import Response
 from rest_framework.views import APIView
