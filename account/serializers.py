@@ -16,11 +16,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = "__all__"
 
-    # def create(self, validated_data):
-    #     user = self.context["request"].user
-    #     user_profile = UserProfile.objects.create(user=user, **validated_data)
-    #     return user_profile
-
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(required=True)
@@ -56,6 +51,10 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         account.set_password(password)
         account.is_active = False
         account.save()
+
+        # Create a UserProfile associated with the new user
+        UserProfile.objects.create(user=account)
+
         return account
 
 
