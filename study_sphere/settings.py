@@ -18,7 +18,7 @@ SECRET_KEY = env("DJANGO_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://front.bluemix.net", "https://*.127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://studysphere-dnn6.onrender.com", "https://*.127.0.0.1"]
 
 
 # Application definition
