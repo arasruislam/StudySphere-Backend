@@ -63,7 +63,6 @@ class UserRegistrationApiView(APIView):
             email_body = render_to_string(
                 "confirm_email.html", {"confirm_link": confirm_link}
             )
-            print(confirm_link)
             email = EmailMultiAlternatives(email_subject, "", to=[user.email])
             email.attach_alternative(email_body, "text/html")
             email.send()
