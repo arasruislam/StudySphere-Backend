@@ -4,34 +4,43 @@ Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is 
 
 ## Key Features
 
-- **User Registration and Authentication**
-  - Implement a robust user registration and login system.
-  - Email verification for account activation upon registration.
-  - Secure user authentication process.
+-  **User Registration and Authentication**
 
-- **Add Tuition**
-  - Admin can add new tuition sessions to the system.
-  - Admin can edit or delete tuition details and manage availability.
+   -  Implement a robust user registration and login system.
+   -  Email verification for account activation upon registration.
+   -  Secure user authentication process.
 
-- **Users Profile**
-  - Display user information such as name and applied tuition history.
-  - Allow users to change their passwords for enhanced security.
+-  **Add Tuition**
 
-- **Filter**
-  - Users can filter available tuition sessions by class for easy navigation.
+   -  Admin can add new tuition sessions to the system.
+   -  Admin can edit or delete tuition details and manage availability.
 
-- **Apply for Tuition**
-  - Allow users to apply for tuition sessions directly from the tuition details page.
-  - Admin can view all applicants for a tuition session and select the best candidate.
-  - Selected tuition sessions are added to the applicant's profile.
+-  **Users Profile**
 
-- **Tuition Reviews**
-  - Users can leave reviews for tuition sessions they have attended.
-  - Reviews are enabled only after an applicant has been selected for the tuition.
+   -  Display user information such as name and applied tuition history.
+   -  Allow users to change their passwords for enhanced security.
+
+-  **Filter**
+
+   -  Users can filter available tuition sessions by class for easy navigation.
+
+-  **Apply for Tuition**
+
+   -  Allow users to apply for tuition sessions directly from the tuition details page.
+   -  Admin can view all applicants for a tuition session and select the best candidate.
+   -  Selected tuition sessions are added to the applicant's profile.
+
+-  **Tuition Reviews**
+   -  Users can leave reviews for tuition sessions they have attended.
+   -  Reviews are enabled only after an applicant has been selected for the tuition.
 
 ## Technology Stack
 
-- **Backend**: Python
-- **Frontend**: JavaScript
-- **Styling**: Tailwind css
-- **Authentication**: pip install django-allauth | pip install django-rest-auth
+-  **Backend**: Python
+-  **Frontend**: JavaScript
+-  **Styling**: Tailwind css
+-  **Authentication**: pip install django-allauth | pip install django-rest-auth
+
+API:
+-Account: [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
+-Tuition: [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
