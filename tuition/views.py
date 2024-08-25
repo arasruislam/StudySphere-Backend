@@ -1,13 +1,20 @@
 from .serializers import TuitionSerializer, ApplicationSerializer, ReviewSerializer
 from .models import Tuition, Application, Review
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, pagination
 from rest_framework.response import Response
 
 
 # Create your views here.
+class TuitionPagination(pagination.PageNumberPagination):
+    page_size = 9
+    page_size_query_param = page_size
+    max_page_size = 100
+
+
 class TuitionViewSet(viewsets.ModelViewSet):
     queryset = Tuition.objects.all()
     serializer_class = TuitionSerializer
+    pagination_class = TuitionPagination
 
 
 class ApplicationViewSet(viewsets.ModelViewSet):
