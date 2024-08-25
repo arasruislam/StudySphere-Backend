@@ -41,6 +41,6 @@ Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is 
 -  **Styling**: Tailwind css
 -  **Authentication**: pip install django-allauth | pip install django-rest-auth
 
-API:
--Account: [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
--Tuition: [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+## API
+Account: [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
+Tuition: [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
