@@ -1,6 +1,11 @@
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from .serializers import UserProfileSerializer, UserRegistrationSerializer
+from .serializers import (
+    UserProfileSerializer,
+    UserRegistrationSerializer,
+    UserLoginSerializer,
+)
 from django.contrib.auth.tokens import default_token_generator
+from rest_framework.authtoken.models import Token
 from django.utils.encoding import force_bytes
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,6 +14,7 @@ from .models import UserProfile
 from django.contrib import messages
 
 # for email sending
+from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
@@ -78,3 +84,31 @@ def Activate(request, uid64, token):
         messages.error(request, "Activation link is invalid!")
         return redirect("register")
 
+
+# User login api view
+class UserLoginApiView(APIView):
+    def post(self, request):
+        serializer = UserLoginSerializer(data=self.request.data)
+
+        if serializer.is_valid():
+            username = serializer.validated_data["username"]
+            password = serializer.validated_data["password"]
+
+            user = authenticate(username=username, password=password)
+
+            if user:
+                token, _ = Token.objects.get_or_create(user=user)
+                login(request, user)
+                return Response({"token": token.key, "user_id": user.id})
+            else:
+                return Response({"error": "Invalid Credential"})
+
+        return Response({"error": serializer.errors})
+
+
+# Logout view
+class UserLogoutApiView(APIView):
+    def get(self, request):
+        request.user.auth_token.delete()
+        logout(request)
+        return redirect("login")
