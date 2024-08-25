@@ -76,3 +76,21 @@ class ReviewAdmin(admin.ModelAdmin):
     list_filter = ("rating", "created")
     search_fields = ("reviewer__username", "tuition__title", "body")
     readonly_fields = ("created",)
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+
+        if not change:
+            email_subject = "Thank you for your review"
+            email_body = render_to_string(
+                "review_thank_you_mail.html",
+                {"user": obj.reviewer, "tuition": obj.tuition, "review": obj.body},
+            )
+
+            from_email = "StudySphere Team <noreply@example.com>"
+
+            email = EmailMultiAlternatives(
+                email_subject, "", from_email, [obj.reviewer.email]
+            )
+            email.attach_alternative(email_body, "text/html")
+            email.send()
