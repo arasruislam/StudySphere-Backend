@@ -12,12 +12,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-vxm=k9oiz*e8&nw2_*csc0y3pnf1z%&i*^n(+q*sq1rfk7rlpl"
+SECRET_KEY = env("DJANGO_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://front.bluemix.net", "https://*.127.0.0.1"]
 
 
 # Application definition
