@@ -46,38 +46,34 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-# user registration system
+# user registration systemj
 class UserRegistrationApiView(APIView):
-    # serializer_class = UserRegistrationSerializer
-    serializer_class = UserSerializer
+    serializer_class = UserRegistrationSerializer
 
-    def perform_create(self, serializer):
-        user = serializer.save()
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            token = default_token_generator.make_token(user)
+            print("token: ", token)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            print("uid: ", uid)
+            confirm_link = f"http://127.0.0.1:8000/accounts/active/{uid}/{token}"
+            email_subject = "Confirm your email"
+            email_body = render_to_string(
+                "confirm_email.html", {"confirm_link": confirm_link}
+            )
+            print(confirm_link)
+            email = EmailMultiAlternatives(email_subject, "", to=[user.email])
+            email.attach_alternative(email_body, "text/html")
+            email.send()
+            return Response(
+                {
+                    "message": "A confirmation link has been sent to your email. Please check and confirm your email to activate your account."
+                }
+            )
 
-    # def post(self, request):
-    #     serializer = self.serializer_class(data=request.data)
-    #     if serializer.is_valid():
-    #         user = serializer.save()
-    #         token = default_token_generator.make_token(user)
-    #         print("token: ", token)
-    #         uid = urlsafe_base64_encode(force_bytes(user.pk))
-    #         print("uid: ", uid)
-    #         confirm_link = f"http://127.0.0.1:8000/accounts/active/{uid}/{token}"
-    #         email_subject = "Confirm your email"
-    #         email_body = render_to_string(
-    #             "confirm_email.html", {"confirm_link": confirm_link}
-    #         )
-    #         print(confirm_link)
-    #         email = EmailMultiAlternatives(email_subject, "", to=[user.email])
-    #         email.attach_alternative(email_body, "text/html")
-    #         email.send()
-    #         return Response(
-    #             {
-    #                 "message": "A confirmation link has been sent to your email. Please check and confirm your email to activate your account."
-    #             }
-    #         )
-
-    #     return Response(serializer.errors)
+        return Response(serializer.errors)
 
 
 # activated user
