@@ -13,5 +13,8 @@ urlpatterns = [
     ),
     path("user/login/", views.UserLoginApiView.as_view(), name="login"),
     path("user/logout/", views.UserLogoutApiView.as_view(), name="logout"),
+    path(
+        "user/change_password/", views.ChangePasswordView.as_view(), name="change_password"
+    ),
     path("active/<uid64>/<token>/", views.Activate, name="active"),
 ]

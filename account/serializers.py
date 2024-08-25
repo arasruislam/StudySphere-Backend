@@ -57,3 +57,20 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+    confirm_password = serializers.CharField(required=True)
+
+    def validate(self, data):
+        new_password = data.get("new_password")
+        confirm_password = data.get("confirm_password")
+
+        if new_password != confirm_password:
+            raise serializers.ValidationError(
+                "New password and Confirm password does not match"
+            )
+
+        return data

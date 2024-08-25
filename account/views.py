@@ -3,6 +3,7 @@ from .serializers import (
     UserProfileSerializer,
     UserRegistrationSerializer,
     UserLoginSerializer,
+    ChangePasswordSerializer,
 )
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework.authtoken.models import Token
@@ -18,6 +19,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
+from rest_framework import status
 from django.shortcuts import redirect
 
 
@@ -111,4 +113,31 @@ class UserLogoutApiView(APIView):
     def get(self, request):
         request.user.auth_token.delete()
         logout(request)
-        return redirect("login")
+        return redirect("accounts")
+
+
+# password change view set
+class ChangePasswordView(APIView):
+
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        serializer = ChangePasswordSerializer(data=request.data)
+
+        if serializer.is_valid():
+            old_password = serializer.validated_data["old_password"]
+            new_password = serializer.validated_data["new_password"]
+
+            if not user.check_password(old_password):
+                return Response(
+                    {"error": "Old password is incorrect"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            user.set_password(new_password)
+            user.save()
+            return Response(
+                {"success": "Password has been changed successfully"},
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
