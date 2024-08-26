@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # django rest framework
     "rest_framework",
     "rest_framework.authtoken",
+    # cors
+    "corsheaders",
     # all app
     "account",
     "tuition",
@@ -47,6 +49,12 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # cors
+    "corsheaders.middleware.CorsMiddleware",
+]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = "study_sphere.urls"
