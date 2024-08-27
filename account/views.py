@@ -116,10 +116,21 @@ class UserLoginApiView(APIView):
 
 # Logout view
 class UserLogoutApiView(APIView):
+    # def get(self, request):
+    #     request.user.auth_token.delete()
+    #     logout(request)
+    #     return redirect("login")
     def get(self, request):
-        request.user.auth_token.delete()
+        try:
+            request.user.auth_token.delete()
+        except (AttributeError, Token.DoesNotExist):
+            return Response(
+                {"detail": "Already logged out or token does not exist."},
+                status=status.HTTP_200_OK,
+            )
+
         logout(request)
-        return redirect("accounts")
+        return redirect("login")
 
 
 # password change view set
