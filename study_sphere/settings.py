@@ -24,7 +24,7 @@ CSRF_TRUSTED_ORIGINS = ["https://studysphere-dnn6.onrender.com", "https://*.127.
 # Application definition
 
 INSTALLED_APPS = [
-    "jazzmin",
+    # "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

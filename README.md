@@ -42,6 +42,9 @@ Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is 
 -  **Authentication**: pip install django-allauth | pip install django-rest-auth
 
 ## API
-- **Account**: [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
 
-- **Tuition**: [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+-  **Account**: [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
+
+-  **Tuition**: [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+
+-  **Dashboard**: [https://studysphere-dnn6.onrender.com/admin/](https://studysphere-dnn6.onrender.com/admin/)

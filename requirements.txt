@@ -3,7 +3,6 @@ Django
 django-cors-headers
 django-environ
 django-filter
-django-jazzmin
 djangorestframework
 Markdown
 pillow
