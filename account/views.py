@@ -92,7 +92,7 @@ def Activate(request, uid64, token):
         user.is_active = True
         user.save()
         messages.success(request, "Your account has been activated successfully!")
-        return redirect("register")
+        return redirect("login")
     else:
         messages.error(request, "Activation link is invalid!")
         return redirect("register")
