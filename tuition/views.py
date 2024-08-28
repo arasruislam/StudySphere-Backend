@@ -16,6 +16,16 @@ class TuitionViewSet(viewsets.ModelViewSet):
     serializer_class = TuitionSerializer
     pagination_class = TuitionPagination
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        id = self.request.query_params.get("id")
+
+        if id:
+            queryset = queryset.filter(id=id)
+
+        return queryset
+
+
 # only superuser can see this api data
 class ApplicationViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
@@ -31,6 +41,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(user_id=user_id)
 
         return queryset
+
 
 # only superuser can see this api data
 class ReviewViewSet(viewsets.ModelViewSet):
