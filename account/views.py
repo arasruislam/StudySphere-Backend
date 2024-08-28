@@ -22,13 +22,13 @@ from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from rest_framework import status
 from django.shortcuts import redirect
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 
 # Create your views here.
 class UserProfileViewSet(viewsets.ModelViewSet):
     # only superuser can see this api data
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
 
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
