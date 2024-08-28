@@ -1,7 +1,7 @@
 from .serializers import TuitionSerializer, ApplicationSerializer, ReviewSerializer
 from .models import Tuition, Application, Review
 from rest_framework import viewsets, status, pagination
-from rest_framework.response import Response
+from rest_framework.permissions import IsAdminUser
 
 
 # Create your views here.
@@ -16,8 +16,10 @@ class TuitionViewSet(viewsets.ModelViewSet):
     serializer_class = TuitionSerializer
     pagination_class = TuitionPagination
 
-
+# only superuser can see this api data
 class ApplicationViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAdminUser]
+
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
 
@@ -30,8 +32,10 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-
+# only superuser can see this api data
 class ReviewViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAdminUser]
+
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
