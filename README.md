@@ -41,10 +41,17 @@ Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is 
 -  **Styling**: Tailwind css
 -  **Authentication**: pip install django-allauth | pip install django-rest-auth
 
-## API
+## API's
 
--  **Account**: [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
+-  [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
 
--  **Tuition**: [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+-  [https://studysphere-dnn6.onrender.com/accounts/?user_id=22](https://studysphere-dnn6.onrender.com/accounts/?user_id=22)
 
--  **Dashboard**: [https://studysphere-dnn6.onrender.com/admin/](https://studysphere-dnn6.onrender.com/admin/)
+-  [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+-  [http://studysphere-dnn6.onrender.com/tuitions/list/](http://studysphere-dnn6.onrender.com/tuitions/list/)
+
+-  [http://studysphere-dnn6.onrender.com/tuitions/applications/](http://studysphere-dnn6.onrender.com/tuitions/applications/)
+
+-  [http://studysphere-dnn6.onrender.com/tuitions/reviews/](http://studysphere-dnn6.onrender.com/tuitions/reviews/)
+
+-  [https://studysphere-dnn6.onrender.com/admin/](https://studysphere-dnn6.onrender.com/admin/)
