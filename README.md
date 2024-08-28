@@ -48,7 +48,10 @@ Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is 
 -  [https://studysphere-dnn6.onrender.com/accounts/?user_id=22](https://studysphere-dnn6.onrender.com/accounts/?user_id=22)
 
 -  [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+  
 -  [http://studysphere-dnn6.onrender.com/tuitions/list/](http://studysphere-dnn6.onrender.com/tuitions/list/)
+
+- [https://studysphere-dnn6.onrender.com/tuitions/list/?id=4](https://studysphere-dnn6.onrender.com/tuitions/list/?id=4)
 
 -  [http://studysphere-dnn6.onrender.com/tuitions/applications/](http://studysphere-dnn6.onrender.com/tuitions/applications/)
 
