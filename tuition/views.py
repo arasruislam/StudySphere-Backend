@@ -45,7 +45,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 
 # only superuser can see this api data
 class ReviewViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
 
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer

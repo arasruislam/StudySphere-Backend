@@ -28,7 +28,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 # Create your views here.
 class UserProfileViewSet(viewsets.ModelViewSet):
     # only superuser can see this api data
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAdminUser]
 
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
