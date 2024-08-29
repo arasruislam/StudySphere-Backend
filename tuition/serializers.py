@@ -17,6 +17,16 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
         fields = "__all__"
 
+    def create(self, validated_data):
+        request = self.context["request"]
+        user = request.user
+        tuition_id = request.data.get("tuition")
+
+        tuition = Tuition.objects.get(id=tuition_id)
+
+        application = Application.objects.create(user=user, tuition=tuition)
+        return application
+
 
 class ReviewSerializer(serializers.ModelSerializer):
     reviewer = UserSerializer(read_only=True)
