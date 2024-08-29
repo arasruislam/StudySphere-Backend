@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Tuition, Application, Review
+from django.contrib.auth.models import User
 from account.serializers import UserSerializer
 
 
@@ -10,8 +11,10 @@ class TuitionSerializer(serializers.ModelSerializer):
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-    tuition = TuitionSerializer()
+    # user = UserSerializer()
+    # tuition = TuitionSerializer()
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
 
     class Meta:
         model = Application
