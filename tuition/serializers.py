@@ -10,8 +10,8 @@ class TuitionSerializer(serializers.ModelSerializer):
 
 
 class ApplicationSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    tuition = TuitionSerializer(read_only=True)
+    user = UserSerializer()
+    tuition = TuitionSerializer()
 
     class Meta:
         model = Application
