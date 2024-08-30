@@ -72,3 +72,4 @@ class ReviewViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(reviewer_id=reviewer_id)
 
         return queryset
+
