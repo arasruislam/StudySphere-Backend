@@ -10,11 +10,25 @@ class TuitionPagination(pagination.PageNumberPagination):
     page_size_query_param = page_size
     max_page_size = 100
 
-
+# tuition view set by per page.
 class TuitionViewSet(viewsets.ModelViewSet):
     queryset = Tuition.objects.all()
     serializer_class = TuitionSerializer
     pagination_class = TuitionPagination
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        id = self.request.query_params.get("id")
+
+        if id:
+            queryset = queryset.filter(id=id)
+
+        return queryset
+
+
+class AllTuitionViewSet(viewsets.ModelViewSet):
+    queryset = Tuition.objects.all()
+    serializer_class = TuitionSerializer
 
     def get_queryset(self):
         queryset = super().get_queryset()
