@@ -25,6 +25,8 @@ CSRF_TRUSTED_ORIGINS = ["https://studysphere-dnn6.onrender.com", "https://*.127.
 # Application definition
 
 INSTALLED_APPS = [
+    # cors
+    "corsheaders",
     # "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -35,8 +37,6 @@ INSTALLED_APPS = [
     # django rest framework
     "rest_framework",
     "rest_framework.authtoken",
-    # cors
-    "corsheaders",
     # all app
     "account",
     "tuition",
