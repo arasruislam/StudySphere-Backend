@@ -42,6 +42,10 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+    def update(self, request, *args, **kwargs):
+        kwargs["partial"] = True
+        return super().update(request, *args, **kwargs)
+
     def perform_create(self, serializer):
         if UserProfile.objects.filter(user=self.request.user).exists():
             raise ValidationError("A profile for this user already exists.")
