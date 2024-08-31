@@ -1,66 +1,102 @@
-# StudySphere
+# StudySphere Backend
 
-Welcome to **StudySphere**, your gateway to academic excellence. StudySphere is an innovative tuition platform designed to connect students with top-tier tutors, offering personalized and interactive online education tailored to individual needs.
+Welcome to the StudySphere Backend repository! This project provides the server-side infrastructure for the StudySphere platform, handling data management, user authentication, and other essential backend functionalities.
 
-## Key Features
+## 🎯 Project Description
 
--  **User Registration and Authentication**
+The StudySphere Backend is built using Django and Django Rest Framework (DRF), designed to deliver a robust and scalable API service. It supports various operations related to user management, tuition applications, and more.
 
-   -  Implement a robust user registration and login system.
-   -  Email verification for account activation upon registration.
-   -  Secure user authentication process.
+## 🌟 Key Features
 
--  **Add Tuition**
+- **RESTful API Endpoints**: Exposes various endpoints for interacting with the platform.
+- **User Authentication**: Handles user registration, login, and profile management.
+- **Data Management**: Manages data related to tuitions, applications, and reviews.
+- **Error Handling**: Provides appropriate error messages and status codes.
+- **Secure**: Implements security best practices for user data and transactions.
 
-   -  Admin can add new tuition sessions to the system.
-   -  Admin can edit or delete tuition details and manage availability.
+## 🛠 Technologies & Tools
 
--  **Users Profile**
+- **Django**: High-level Python web framework for rapid development.
+- **Django Rest Framework (DRF)**: Powerful and flexible toolkit for building Web APIs.
+- **Python**: Programming language used for backend development.
+- **PostgreSQL**: Database management system for storing data.
+- **Django Allauth**: Authentication system for handling user registration and login.
+- **Django Cors Headers**: Handles Cross-Origin Resource Sharing (CORS) to allow requests from different domains.
 
-   -  Display user information such as name and applied tuition history.
-   -  Allow users to change their passwords for enhanced security.
+## 🏗 API Endpoints
 
--  **Filter**
+### User Management
 
-   -  Users can filter available tuition sessions by class for easy navigation.
+- **Register User**
+  - `POST /accounts/new_user/register/`
+  - **Description**: Registers a new user.
+  - **Body**: `{ "username": "string", "email": "string", "password": "string" }`
 
--  **Apply for Tuition**
+- **Login User**
+  - `POST /accounts/user/login/`
+  - **Description**: Authenticates a user and returns a token.
+  - **Body**: `{ "username": "string", "password": "string" }`
 
-   -  Allow users to apply for tuition sessions directly from the tuition details page.
-   -  Admin can view all applicants for a tuition session and select the best candidate.
-   -  Selected tuition sessions are added to the applicant's profile.
+- **Get User Profile**
+  - `GET /accounts/id`
+  - **Description**: Retrieves the profile information of the authenticated user.
+  - **Headers**: `Authorization: Token ${token}`
 
--  **Tuition Reviews**
-   -  Users can leave reviews for tuition sessions they have attended.
-   -  Reviews are enabled only after an applicant has been selected for the tuition.
+- **Change Password**
+  - `POST /accounts/user/change_password/`
+  - **Description**: Allows users to change their password.
+  - **Body**: `{ "old_password": "string", "new_password": "string", "confirm_password": "string" }`
+  - **Headers**: `Authorization: Bearer <token>`
 
-## Technology Stack
+### Tuition Management
 
--  **Backend**: Python
--  **Frontend**: JavaScript
--  **Styling**: Tailwind css
--  **Authentication**: pip install django-allauth | pip install django-rest-auth
+- **Get Tuition List**
+  - `GET /tuitions/list`
+  - **Description**: Retrieves a list of available tuitions.
 
-## API's
+- **Create Tuition**
+  - `POST /api/tuitions/`
+  - **Description**: Creates a new tuition entry.
+  - **Body**: `{ "title": "string", "description": "string", "price": "number" }`
+  - **Headers**: `Authorization: Bearer <token>`
 
--  [https://studysphere-dnn6.onrender.com/accounts/](https://studysphere-dnn6.onrender.com/accounts/)
+- **Update Tuition**
+  - `PUT /api/tuitions/{id}/`
+  - **Description**: Updates a tuition entry.
+  - **Body**: `{ "title": "string", "description": "string", "price": "number" }`
+  - **Headers**: `Authorization: Bearer <token>`
 
--  [https://studysphere-dnn6.onrender.com/accounts/new_user/register/](https://studysphere-dnn6.onrender.com/accounts/new_user/register/)
+- **Delete Tuition**
+  - `DELETE /api/tuitions/{id}/`
+  - **Description**: Deletes a tuition entry.
+  - **Headers**: `Authorization: Bearer <token>`
 
--  [https://studysphere-dnn6.onrender.com/accounts/user/login/](https://studysphere-dnn6.onrender.com/accounts/user/login/)
+### Application Management
 
--  [https://studysphere-dnn6.onrender.com/accounts/user/logout/](https://studysphere-dnn6.onrender.com/accounts/user/logout/)
+- **Apply for Tuition**
+  - `POST /api/application/`
+  - **Description**: Applies for a tuition.
+  - **Body**: `{ "tuition_id": "integer", "user_id": "integer" }`
+  - **Headers**: `Authorization: Bearer <token>`
 
--  [https://studysphere-dnn6.onrender.com/accounts/?user_id=22](https://studysphere-dnn6.onrender.com/accounts/?user_id=22)
+- **Get User Applications**
+  - `GET /api/application/`
+  - **Description**: Retrieves applications made by the authenticated user.
+  - **Headers**: `Authorization: Bearer <token>`
 
--  [https://studysphere-dnn6.onrender.com/tuitions/](https://studysphere-dnn6.onrender.com/tuitions/)
+### Review Management
 
--  [http://studysphere-dnn6.onrender.com/tuitions/list/](http://studysphere-dnn6.onrender.com/tuitions/list/)
+- **Submit Review**
+  - `POST /api/review/`
+  - **Description**: Submits a review for a tuition.
+  - **Body**: `{ "tuition_id": "integer", "rating": "integer", "comment": "string" }`
+  - **Headers**: `Authorization: Bearer <token>`
 
--  [https://studysphere-dnn6.onrender.com/tuitions/list/?id=4](https://studysphere-dnn6.onrender.com/tuitions/list/?id=4)
+- **Get Reviews for Tuition**
+  - `GET /api/review/{tuition_id}/`
+  - **Description**: Retrieves reviews for a specific tuition.
 
--  [http://studysphere-dnn6.onrender.com/tuitions/applications/](http://studysphere-dnn6.onrender.com/tuitions/applications/)
-
--  [http://studysphere-dnn6.onrender.com/tuitions/reviews/](http://studysphere-dnn6.onrender.com/tuitions/reviews/)
-
--  [https://studysphere-dnn6.onrender.com/admin/](https://studysphere-dnn6.onrender.com/admin/)
+## 🛠 Installation & Setup
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/arasruislam/StudySphere-Backend.git
