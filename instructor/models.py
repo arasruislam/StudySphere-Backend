@@ -32,7 +32,7 @@ class Instructor(models.Model):
         max_length=20, choices=TUTORING_STATUS_CHOICES, default="Available"
     )
     days_per_week = models.IntegerField(default=5)
-    experience = models.CharField(max_length=20)
+    experience = models.IntegerField()
     extra_facilities = models.CharField(max_length=200)
     medium_of_instruction = models.CharField(
         max_length=20, choices=MEDIUM_OF_INSTRUCTION_CHOICES

@@ -24,7 +24,7 @@ class InstructorRegistrationSerializer(serializers.ModelSerializer):
     )
     status = serializers.CharField(max_length=20, required=False, allow_blank=True)
     days_per_week = serializers.IntegerField(default=5)
-    experience = serializers.CharField(max_length=20, required=True)
+    experience = serializers.IntegerField(required=True)
     extra_facilities = serializers.CharField(
         max_length=200, required=False, allow_blank=True
     )
