@@ -111,7 +111,7 @@ class ApplicationAdmin(admin.ModelAdmin):
                 email_subject,
                 "",
                 from_email,
-                to=[obj.student.email],
+                to=[obj.student.user.email],
             )
             email.attach_alternative(email_body, "text/html")
             email.send()
