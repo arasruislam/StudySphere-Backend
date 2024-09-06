@@ -7,8 +7,9 @@ from .views import home
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),
-    path("accounts/", include("account.urls")),
-    path("tuitions/", include("tuition.urls")),
+    path("api/student/", include("student.urls")),
+    path("api/instructor/", include("instructor.urls")),
+    path("api/tuitions/", include("tuitions.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

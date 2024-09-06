@@ -1,0 +1,32 @@
+<div
+    style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 8px; background-color: #f9f9f9; color: #333;">
+    <h2 style="color: #2c3e50;">Hello, <span
+            style="font-weight: bold; color: #007bff;">{{ instructor.user.username }}</span>!</h2>
+    <p>We are thrilled to inform you that your new tuition titled "<span
+            style="font-weight: bold; color: #007bff;">{{ tuition.title }}</span>" has been successfully added to
+        StudySphere.</p>
+
+    <p>Your tuition is now available on our platform, and students will be able to view it. Below are the details of the
+        tuition you added:</p>
+
+    <ul style="list-style: none; padding: 0;">
+        <li><strong>Title:</strong> {{ tuition.title }}</li>
+        <li><strong>Description:</strong> {{ tuition.description }}</li>
+        <li><strong>Subject:</strong> {{ tuition.subject.all|join:", " }}</li>
+        <li><strong>Class:</strong> {{ tuition.tuition_class }}</li>
+        <li><strong>Medium:</strong> {{ tuition.medium }}</li>
+        <li><strong>Student Gender:</strong> {{ tuition.student_gender }}</li>
+        <li><strong>Preferred Tutor Gender:</strong> {{ tuition.preferred_tutor_gender }}</li>
+        <li><strong>Location:</strong> {{ tuition.location }}</li>
+        <li><strong>Salary:</strong> {{ tuition.salary }}</li>
+    </ul>
+
+    <p>To manage or view your tuition details, please log in to your StudySphere account.</p>
+
+    <p>If you need any help or have questions, feel free to <a href="mailto:support@studysphere.com"
+            style="color: #007bff;">contact us</a>.</p>
+
+    <p style="margin-top: 20px;">Thank you for being a valuable part of StudySphere!</p>
+
+    <p style="margin-top: 20px;">Best regards,<br>The StudySphere Team</p>
+</div>
