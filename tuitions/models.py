@@ -26,8 +26,8 @@ CLASS_CHOICES = [
 ]
 MEDIUM_OF_INSTRUCTION_CHOICES = [
     ("Both", "Both"),
-    ("Bangla", "Bangla Medium"),
-    ("English", "English Medium"),
+    ("Bangla", "Bangla"),
+    ("English", "English"),
 ]
 GENDER_CHOICES = [
     ("Both", "Both"),
