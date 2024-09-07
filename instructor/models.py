@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 # Constant value
 MEDIUM_OF_INSTRUCTION_CHOICES = [
     ("Both", "Both"),
-    ("Bangla", "Bangla Medium"),
-    ("English", "English Medium"),
+    ("Bangla", "Bangla"),
+    ("English", "English"),
 ]
 TUTORING_STATUS_CHOICES = [
     ("Available", "Available"),
