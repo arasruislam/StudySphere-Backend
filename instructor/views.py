@@ -46,7 +46,7 @@ class InstructorRegistrationApiView(APIView):
             token = default_token_generator.make_token(instructor)
             uid = urlsafe_base64_encode(force_bytes(instructor.pk))
 
-            confirm_link = f"http://127.0.0.1:8000/api/instructor/active/{uid}/{token}"
+            confirm_link = f"https://studysphere-dnn6.onrender.com/api/instructor/active/{uid}/{token}"
             email_subject = "Confirm your email"
             email_body = render_to_string(
                 "confirm_email.html", {"confirm_link": confirm_link}
@@ -81,7 +81,7 @@ def Activate(request, uid64, token):
         instructor.is_active = True
         instructor.save()
         messages.success(request, "Your account has been activated successfully!")
-        return redirect("http://localhost:5173")
+        return redirect("https://study-sphere-69e77.web.app")
     else:
         return redirect("instructor_register")
 
