@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Review, Tuition, Application, Subject
 from django.contrib.auth.models import User
-from student.serializers import UserSerializer
+from student.serializers import UserSerializer, StudentSerializer
 
 # all serializers
 class SubjectSerializer(serializers.ModelSerializer):
@@ -27,7 +27,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    reviewer = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    reviewer = StudentSerializer()
+    # reviewer = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
 
     class Meta:
