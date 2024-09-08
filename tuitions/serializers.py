@@ -22,8 +22,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
     student = serializers.PrimaryKeyRelatedField(
         queryset=Student.objects.all()
     )  # change here
-    tuition = TuitionSerializer()
-    # tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
+    # tuition = TuitionSerializer()
+    tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
 
     class Meta:
         model = Application
