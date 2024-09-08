@@ -82,7 +82,6 @@ class AllTuitionViewSet(viewsets.ModelViewSet):
 
 # only superuser can see this api data
 class ApplicationViewSet(viewsets.ModelViewSet):
-
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
 
