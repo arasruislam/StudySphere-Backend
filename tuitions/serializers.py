@@ -7,7 +7,6 @@ from student.models import Student
 
 # all serializers
 class SubjectSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Subject
         fields = "__all__"
@@ -23,7 +22,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
     student = serializers.PrimaryKeyRelatedField(
         queryset=Student.objects.all()
     )  # change here
-    tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
+    tuition = TuitionSerializer()
+    # tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
 
     class Meta:
         model = Application
