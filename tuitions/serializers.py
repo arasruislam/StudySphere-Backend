@@ -31,8 +31,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    reviewer = StudentSerializer()
-    # reviewer = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    # reviewer = StudentSerializer()
+    reviewer = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all())
     tuition = serializers.PrimaryKeyRelatedField(queryset=Tuition.objects.all())
 
     class Meta:
