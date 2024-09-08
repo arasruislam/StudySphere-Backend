@@ -93,12 +93,17 @@ class ApplicationViewSet(viewsets.ModelViewSet):
         queryset = super().get_queryset()
         student = self.request.query_params.get("student")
         tuition = self.request.query_params.get("tuition")
+        instructor = self.request.query_params.get("instructor")
 
         if student:
             queryset = queryset.filter(student=student)
 
         if tuition:
             queryset = queryset.filter(tuition=tuition)
+
+        # Filter by instructor in the related Tuition model
+        if instructor:
+            queryset = queryset.filter(tuition__instructor=instructor)
 
         return queryset
 
